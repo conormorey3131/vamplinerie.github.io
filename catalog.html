@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vamp Lingerie Catalog</title>
+  <style>
+    /* Existing CSS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+    .navbar {
+      background-color: #000;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .navbar h1 {
+      color: #F72585;
+      font-size: 24px;
+    }
+    .nav-links {
+      list-style-type: none;
+      display: flex;
+      gap: 20px;
+    }
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: #fff;
+      margin: 5px;
+    }
+    .banner {
+      width: 100%;
+      height: 400px;
+      background-image: url('Cover photo for catalog/GROUP SHOT - FREYA - FANTASIE - ELOMI - WACOAL.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .catalog-section {
+      padding: 20px;
+      text-align: center;
+    }
+    .catalog-section h2 {
+      color: #F72585;
+      margin-bottom: 20px;
+    }
+    .catalog-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .catalog-item {
+      background-color: #1A1A1D;
+      padding: 20px;
+      flex: 1 1 250px;
+      max-width: 300px;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+      position: relative; /* Added for positioning color-selector */
+    }
+    .catalog-item img.main-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .catalog-item h3 {
+      color: #F72585;
+      margin-top: 10px;
+    }
+    .catalog-item p {
+      color: #E0E0E0;
+    }
+    /* Color Selector Styles */
+    .color-selector {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+    }
+    .color-option {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin: 0 5px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: 0.3s;
+    }
+    .color-option:hover {
+      border-color: #F72585;
+    }
+    .color-option.active {
+      border-color: #F72585;
+    }
+    /* Media Queries */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+      }
+      .navbar {
+        justify-content: space-between;
+      }
+      .hamburger {
+        display: block;
+      }
+      .catalog-items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .catalog-item {
+        flex: 1 1 45%;
+        max-width: 45%;
+        margin: 10px;
+      }
+      .nav-links.active {
+        display: flex;
+        background-color: #000;
+        position: absolute;
+        top: 60px;
+        left: 0;
+      }
+      .nav-links li {
+        text-align: center;
+        width: 100%;
+        padding: 15px 0;
+      }
+    }
+    @media (max-width: 480px) {
+      .catalog-item {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+    }
+    .nav-links.active {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <a href="index.html"><h1>Vamp Lingerie</h1></a>
+    <ul class="nav-links">
+      <li><a href="#">Catalog</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Banner Section -->
+  <div class="banner"></div>
+
+  <!-- Catalog Section for Elomi -->
+  <section class="catalog-section">
+    <h2>Elomi</h2>
+    <div class="catalog-items">
+      <!-- First Catalog Item -->
+      <div class="catalog-item">
+        <img src="allYear/Elomi/LUCIE BLACK UW-PLUNGE-BRA-STRETCH EL4490 HIGH-LEG-BRIEF EL4496 BLK WEB.jpg" alt="LUCIE Collection" class="main-image">
+        <h3>LUCIE</h3>
+        <p>Available in: Black</p>
+      </div>
+
+      <!-- Second Catalog Item with Image Selector -->
+      <div class="catalog-item">
+        <div class="image-display">
+          <img src="" alt="MORGAN Collection" class="main-image">
+        </div>
+        <div class="color-selector">
+          <div class="color-option active" style="background-color: #f7dfd7;" data-image="allYear/Elomi/MORGAN_CAMEO-ROSE_UW-BRA_EL4110_FULL-BRIEF_EL4116_F_TRADE_3000_SS25.jpg" onclick="changeImage(this, this.getAttribute('data-image'))"></div>
+          <div class="color-option" style="background-color: #000000;" data-image="allYear/Elomi/MORGAN_EBONY_UW-BRA_EL4110_BRIEF_EL4115_F_TRADE_3000_SS25.jpg" onclick="changeImage(this, this.getAttribute('data-image'))"></div>
+        </div>
+        <h3>MORGAN</h3>
+        <p>Available in: Cameo Rose, Black</p>
+      </div>
+
+      <!-- Third Catalog Item -->
+      <div class="catalog-item">
+        <img src="allYear/Elomi/SACHI_BLACK_UW-PLUNGE-BRA_EL4350_BRIEF_EL4355_B_TRADE_3000_SS25.jpg" alt="SACHI Collection" class="main-image">
+        <h3>SACHI</h3>
+        <p>Available in: Black</p>
+      </div>
+
+      <!-- Fourth Catalog Item -->
+      <div class="catalog-item">
+        <img src="allYear/Elomi/MATILDA BLACK UW-PLUNGE-BRA EL8900 FULL-BRIEF EL8906 BLK PRINT.jpg" alt="MATILDA Collection" class="main-image">
+        <h3>MATILDA</h3>
+        <p>Available in: Black</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalog Section for Fantasie -->
+  <section class="catalog-section">
+    <h2>Fantasie</h2>
+    <div class="catalog-items">
+
+      <!-- First Fantasie Catalog Item (Belle with Color Selector) -->
+      <div class="catalog-item">
+        <div class="image-display">
+          <img src="" alt="BELLE Collection" class="main-image">
+        </div>
+        <div class="color-selector">
+          <!-- Color options for BELLE -->
+          <div class="color-option active" style="background-color: #000000;" data-image="allYear/Fantasie/BELLE_SMOOTHEASE-BLACK-UW_BALCONY_BRA-FL6010-INVISIBLE_STRETCH_BRIEF-FL2329-F-TRADE-WEB-AW24.jpg" onclick="changeImage(this, this.getAttribute('data-image'))"></div>
+          <div class="color-option" style="background-color: #E4C9A8;" data-image="allYear/Fantasie/BELLE_SMOOTHEASE-NATURAL_BEIGE-UW_BALCONY_BRA-FL6010-INVISIBLE_STRETCH_BRIEF-FL2329-F-TRADE-3000-AW24.jpg" onclick="changeImage(this, this.getAttribute('data-image'))"></div>
+        </div>
+        <h3>BELLE</h3>
+        <p>Available in: Black, Natural Beige</p>
+      </div>
+
+      <!-- Second Fantasie Catalog Item -->
+      <div class="catalog-item">
+        <img src="allYear/Fantasie/FUSION-SAND-UW_FULL_CUP_SIDE_SUPPORT_BRA-FL3091-BRIEF-FL3095-F-TRADE-3000-AW24.jpg" alt="FUSION Collection" class="main-image">
+        <h3>FUSION</h3>
+        <p>Available in: Sand</p>
+      </div>
+
+      <!-- Third Fantasie Catalog Item -->
+      <div class="catalog-item">
+        <img src="allYear/Fantasie/REFLECT_BLACK_UW-MOULDED-SPACER-BRA_FL101810_HIGH-WAIST-BRIEF_FL101852_B_TRADE_WEB_SS25.jpg" alt="REFLECT Collection" class="main-image">
+        <h3>REFLECT</h3>
+        <p>Available in: Black</p>
+      </div>
+
+      <!-- Fourth Fantasie Catalog Item -->
+      <div class="catalog-item">
+        <img src="allYear/Fantasie/PIPPA_RASPBERRY-RIPPLE_UW-SIDE-SUPPORT-BRA_FL100701_SHORT_FL100780_600X800_ENGLISH.jpeg" alt="PIPPA Collection" class="main-image">
+        <h3>PIPPA</h3>
+        <p>Available in: Raspberry</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- JavaScript -->
+  <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    // Function to change the main image and update the active color option
+    function changeImage(element, imageName) {
+      // Find the closest catalog-item ancestor
+      const catalogItem = element.closest('.catalog-item');
+      // Find the main-image within this catalog-item
+      const mainImage = catalogItem.querySelector('.main-image');
+      // Update the src of the main-image
+      mainImage.src = imageName;
+      // Remove 'active' class from all color-options within this catalog-item
+      catalogItem.querySelectorAll('.color-option').forEach(option => {
+        option.classList.remove('active');
+      });
+      // Add 'active' class to the clicked color-option
+      element.classList.add('active');
+    }
+
+    // Initialize the default images for catalog items with image selectors
+    window.onload = function() {
+      document.querySelectorAll('.catalog-item').forEach(item => {
+        const firstColorOption = item.querySelector('.color-option');
+        if (firstColorOption) {
+          const imageName = firstColorOption.getAttribute('data-image');
+          changeImage(firstColorOption, imageName);
+        } else {
+          // If no color options, ensure the main image is displayed
+          const mainImage = item.querySelector('.main-image');
+          if (mainImage && mainImage.src === '') {
+            mainImage.src = mainImage.getAttribute('src');
+          }
+        }
+      });
+    };
+  </script>
+
+</body>
+</html>
