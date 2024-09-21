@@ -58,6 +58,10 @@
       padding: 20px;
       text-align: center;
     }
+    .catalog-section h1 {
+      color: #F72585;
+      margin: 40px 0 20px 0; /* Added margin around h1 */
+    }
     .catalog-section h2 {
       color: #F72585;
       margin-bottom: 20px;
@@ -76,7 +80,7 @@
       text-align: center;
       border-radius: 10px;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-      position: relative; /* Added for positioning color-selector */
+      position: relative;
     }
     .catalog-item img.main-image {
       width: 100%;
@@ -180,6 +184,7 @@
 
   <!-- Catalog Section for Elomi -->
   <section class="catalog-section">
+    <h1>Continuous Stock</h1>
     <h2>Elomi</h2>
     <div class="catalog-items">
       <!-- First Catalog Item -->
@@ -259,6 +264,55 @@
       </div>
     </div>
   </section>
+
+  <!-- Catalog Section for Freya -->
+  <section class="catalog-section">
+    <h2>Freya</h2>
+    <div class="catalog-items">
+      <!-- First Freya Catalog Item -->
+      <div class="catalog-item">
+        <img src="allYear/Freya/Freya_Tailored_NaturalBeige_1200x600_English.jpg" alt="Tailored Collection" class="main-image">
+        <h3>Tailored</h3>
+        <p>Available in: Natural Beige</p>
+      </div>
+      <!-- Second Freya Catalog Item -->
+      <div class="catalog-item">
+        <img src="allYear/Freya/OFFBEAT-UW-SIDE-SUPPORT-BRA-AA5451-BRIEF-AA5455-ROSEHIP-ROP.jpg" alt="Offbeat Collection" class="main-image">
+        <h3>Offbeat</h3>
+        <p>Available in: Rosehip</p>
+      </div>
+      <!-- Third Freya Catalog Item -->
+      <div class="catalog-item">
+        <img src="allYear/Freya/ROSE-BLOSSOM-BLACK-ROSE-UW PLUNGE BRA AA402402-THONG-AA402470-BKR RGB.jpg" alt="Rose Blossom Collection" class="main-image">
+        <h3>Rose Blossom</h3>
+        <p>Available in: Black</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalog Section for Wacoal -->
+  <section class="catalog-section">
+    <h2>Wacoal</h2>
+    <div class="catalog-items">
+      <!-- First Wacoal Catalog Item -->
+      <div class="catalog-item">
+        <img src="allYear/wacoal/EMBRACE-LACE-BLACK-CHEMISE-WA814191-F-TRADE-3000-AW24.jpg" alt="First Wacoal Collection" class="main-image">
+        <h3>EMBRACE</h3>
+        <p>Available in: Black</p>
+      </div>
+      <!-- Second Wacoal Catalog Item -->
+      <div class="catalog-item">
+        <div class="image-display">
+          <img src="" alt="BELLE Collection" class="main-image">
+        </div>
+        <div class="color-selector">
+          <!-- Color options for BELLE -->
+          <div class="color-option active" style="background-color: #bdb6aa;" data-image="allYear/wacoal/RAFFINE-FRAPPE-UW-CONTOUR-BRA-WE148004-FULL-BRIEF-WE148010-F-TRADE-3000.jpg" onclick="changeImage(this, this.getAttribute('data-image'))"></div>
+          <div class="color-option" style="background-color: #FFFFFF;" data-image="allYear/wacoal/RAFFINE_WHITE_UW-CONTOUR-BRA_WE148004_FULL-BRIEF_WE148010_F_TRADE_3000.jpg" onclick="changeImage(this, this.getAttribute('data-image'))"></div>
+        </div>
+        <h3>BELLE</h3>
+        <p>Available in: Frappe, White</p>
+      </div>
 
   <!-- JavaScript -->
   <script>
