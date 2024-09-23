@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Vamp Lingerie Catalog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* Existing CSS */
+    /* Basic reset and body styling */
     * {
       margin: 0;
       padding: 0;
@@ -15,18 +16,24 @@
       background-color: #000;
       color: #fff;
     }
+
+    /* Navbar Styles */
     .navbar {
-      background-color: #000;
+      background-color: rgba(0, 0, 0, 0.8);
       padding: 15px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       position: relative;
+      z-index: 1000;
+      box-sizing: border-box;
     }
     .navbar h1 {
       color: #F72585;
       font-size: 24px;
+      margin: 0;
+      padding: 0;
     }
     .nav-links {
       list-style-type: none;
@@ -36,17 +43,101 @@
     .nav-links li a {
       color: #fff;
       text-decoration: none;
+      padding: 10px;
     }
+
+    /* Hamburger Menu */
     .hamburger {
       display: none;
       cursor: pointer;
+      flex-direction: column;
+      z-index: 9999; /* Ensure it stays on top */
     }
     .hamburger div {
       width: 25px;
       height: 3px;
-      background-color: #fff;
-      margin: 5px;
+      background-color: #FF1493; /* Matching logo color */
+      margin: 4px 0;
+      transition: 0.4s;
     }
+
+    /* Hamburger Animation */
+    .hamburger.toggle div:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .hamburger.toggle div:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.toggle div:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    /* Show hamburger and hide nav-links on mobile */
+    @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: rgba(0, 0, 0, 0.9);
+                height: 100vh;
+                width: 200px;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                transform: translateX(100%); /* Initially hidden off-screen */
+                transition: transform 0.3s ease-in-out;
+                z-index: 9999; /* Ensure it is on top */
+            }
+
+            .nav-links.active {
+                transform: translateX(0); /* Slide-in effect */
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            /* Ensure the hamburger is visible on mobile */
+            .hamburger {
+                display: flex; /* Show hamburger on mobile */
+            }
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #FF1493;
+            margin: 4px 0;
+            transition: 0.4s;
+        }
+
+        /* Optional: Hamburger Animation */
+        .hamburger.toggle div:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.toggle div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.toggle div:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Hide hamburger on larger screens */
+        @media (min-width: 768px) {
+            .hamburger {
+                display: none;
+            }
+        }
+
+    /* Banner Section */
     .banner {
       width: 100%;
       height: 400px;
@@ -54,13 +145,15 @@
       background-size: cover;
       background-position: center;
     }
+
+    /* Catalog Section */
     .catalog-section {
       padding: 20px;
       text-align: center;
     }
     .catalog-section h1 {
       color: #F72585;
-      margin: 40px 0 20px 0; /* Added margin around h1 */
+      margin: 40px 0 20px 0;
     }
     .catalog-section h2 {
       color: #F72585;
@@ -80,7 +173,6 @@
       text-align: center;
       border-radius: 10px;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-      position: relative;
     }
     .catalog-item img.main-image {
       width: 100%;
@@ -95,6 +187,7 @@
     .catalog-item p {
       color: #E0E0E0;
     }
+
     /* Color Selector Styles */
     .color-selector {
       display: flex;
@@ -116,40 +209,13 @@
     .color-option.active {
       border-color: #F72585;
     }
-    /* Media Queries */
+
+    /* Responsive adjustments */
     @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-      }
-      .navbar {
-        justify-content: space-between;
-      }
-      .hamburger {
-        display: block;
-      }
-      .catalog-items {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
       .catalog-item {
         flex: 1 1 45%;
         max-width: 45%;
         margin: 10px;
-      }
-      .nav-links.active {
-        display: flex;
-        background-color: #000;
-        position: absolute;
-        top: 60px;
-        left: 0;
-      }
-      .nav-links li {
-        text-align: center;
-        width: 100%;
-        padding: 15px 0;
       }
     }
     @media (max-width: 480px) {
@@ -157,9 +223,6 @@
         flex: 1 1 100%;
         max-width: 100%;
       }
-    }
-    .nav-links.active {
-      display: flex;
     }
   </style>
   <link rel="icon" href="vampLingFavicon.ico" type="image/x-icon">
@@ -228,7 +291,6 @@
   <section class="catalog-section">
     <h2>Fantasie</h2>
     <div class="catalog-items">
-
       <!-- First Fantasie Catalog Item (Belle with Color Selector) -->
       <div class="catalog-item">
         <div class="image-display">
@@ -314,27 +376,27 @@
         <h3>BELLE</h3>
         <p>Available in: Frappe, White</p>
       </div>
+    </div>
+  </section>
 
   <!-- JavaScript -->
   <script>
     function toggleMenu() {
       const navLinks = document.querySelector('.nav-links');
       navLinks.classList.toggle('active');
+
+      const hamburger = document.querySelector('.hamburger');
+      hamburger.classList.toggle('toggle'); // Optional: to animate the hamburger icon
     }
 
     // Function to change the main image and update the active color option
     function changeImage(element, imageName) {
-      // Find the closest catalog-item ancestor
       const catalogItem = element.closest('.catalog-item');
-      // Find the main-image within this catalog-item
       const mainImage = catalogItem.querySelector('.main-image');
-      // Update the src of the main-image
       mainImage.src = imageName;
-      // Remove 'active' class from all color-options within this catalog-item
       catalogItem.querySelectorAll('.color-option').forEach(option => {
         option.classList.remove('active');
       });
-      // Add 'active' class to the clicked color-option
       element.classList.add('active');
     }
 
@@ -346,7 +408,6 @@
           const imageName = firstColorOption.getAttribute('data-image');
           changeImage(firstColorOption, imageName);
         } else {
-          // If no color options, ensure the main image is displayed
           const mainImage = item.querySelector('.main-image');
           if (mainImage && mainImage.src === '') {
             mainImage.src = mainImage.getAttribute('src');
