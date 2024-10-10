@@ -5,17 +5,18 @@
   <title>Vamp Lingerie Catalog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    /* Reset and Box-Sizing */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+    /* Body Styles */
     body {
       font-family: Arial, sans-serif;
       background-color: #000;
       color: #fff;
     }
-
     /* Navbar Styles */
     .navbar {
       background-color: rgba(0, 0, 0, 0.8);
@@ -26,13 +27,10 @@
       flex-wrap: wrap;
       position: relative;
       z-index: 1000;
-      box-sizing: border-box;
     }
     .navbar h1 {
       color: #F72585;
       font-size: 24px;
-      margin: 0;
-      padding: 0;
     }
     .nav-links {
       list-style-type: none;
@@ -44,21 +42,18 @@
       text-decoration: none;
       padding: 10px;
     }
-
     /* Hamburger Menu */
     .hamburger {
       cursor: pointer;
-      flex-direction: column;
-      z-index: 9999; /* Ensure it stays on top */
+      display: none;
     }
     .hamburger div {
       width: 25px;
       height: 3px;
-      background-color: #FF1493; /* Matching logo color */
+      background-color: #FF1493;
       margin: 4px 0;
       transition: 0.4s;
     }
-
     /* Hamburger Animation */
     .hamburger.toggle div:nth-child(1) {
       transform: rotate(-45deg) translate(-5px, 6px);
@@ -69,72 +64,34 @@
     .hamburger.toggle div:nth-child(3) {
       transform: rotate(45deg) translate(-5px, -6px);
     }
-
-    /* Show hamburger and hide nav-links on mobile */
+    /* Responsive Navbar */
     @media (max-width: 768px) {
-            .nav-links {
-                position: absolute;
-                top: 60px;
-                right: 0;
-                background-color: rgba(0, 0, 0, 0.9);
-                height: 100vh;
-                width: 200px;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                transform: translateX(100%); /* Initially hidden off-screen */
-                transition: transform 0.3s ease-in-out;
-                z-index: 9999; /* Ensure it is on top */
-            }
-
-            .nav-links.active {
-                transform: translateX(0); /* Slide-in effect */
-            }
-
-            .nav-links li {
-                margin: 20px 0;
-            }
-
-            /* Ensure the hamburger is visible on mobile */
-            .hamburger {
-                display: flex; /* Show hamburger on mobile */
-            }
-        }
-
-        /* Hamburger Menu Styles */
-        .hamburger {
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .hamburger div {
-            width: 25px;
-            height: 3px;
-            background-color: #FF1493;
-            margin: 4px 0;
-            transition: 0.4s;
-        }
-
-        /* Optional: Hamburger Animation */
-        .hamburger.toggle div:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-
-        .hamburger.toggle div:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.toggle div:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-
-        /* Hide hamburger on larger screens */
-        @media (min-width: 768px) {
-            .hamburger {
-                display: none;
-            }
-        }
-
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.9);
+        height: 100vh;
+        width: 200px;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 9999;
+      }
+      .nav-links.active {
+        transform: translateX(0);
+      }
+      .nav-links li {
+        margin: 20px 0;
+      }
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        z-index: 9999;
+      }
+    }
     /* Banner Section */
     .banner {
       width: 100%;
@@ -143,17 +100,12 @@
       background-size: cover;
       background-position: center;
     }
-
     /* Catalog Section */
     .catalog-section {
-      padding: 20px;
+      padding: 40px 20px;
       text-align: center;
     }
-    .catalog-section h1 {
-      color: #F72585;
-      margin: 40px 0 20px 0; /* Added margin around h1 */
-    }
-    .catalog-section h2 {
+    .catalog-section h1, .catalog-section h2 {
       color: #F72585;
       margin-bottom: 20px;
     }
@@ -171,7 +123,6 @@
       text-align: center;
       border-radius: 10px;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-      position: relative;
     }
     .catalog-item img.main-image {
       width: 100%;
@@ -212,7 +163,6 @@
       .catalog-item {
         flex: 1 1 45%;
         max-width: 45%;
-        margin: 10px;
       }
     }
     @media (max-width: 480px) {
@@ -221,15 +171,14 @@
         max-width: 100%;
       }
     }
+    /* Footer Styles */
     .footer {
-  background-color: #000;
-  color: #F72585;
-  text-align: center;
-  padding: 20px;
-  position: relative;
-  margin-top: 40px;
-}
-
+      background-color: #000;
+      color: #F72585;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
   </style>
   <link rel="icon" href="vampLingFavicon.ico" type="image/x-icon">
 </head>
@@ -252,46 +201,51 @@
   <!-- Banner Section -->
   <div class="banner"></div>
 
-<!-- Catalog Section for Fantasie -->
-<section class="catalog-section">
-  <h1>Coming Soon</h1>
-  <h2>Fantasie</h2>
-  <div class="catalog-items">
-    <!-- First Catalog Item -->
-    <div class="catalog-item">
-      <img src="comingSoon/Fanatsie/PORTIA-BLACK-UW BALCONETTE BRA-FL102607-BRAZILIAN-FL102670-BLK-1-PRINT.jpg" alt="LUCIE Collection" class="main-image">
-      <h3>Portia</h3>
-      <p>Available in: Black</p>
-    </div>
-
-    <!-- Second Catalog Item -->
-    <div class="catalog-item">
-      <img src="comingSoon/Fanatsie/LUCIA-CHERRY-UW SIDE SUPPORT BRA-FL101501-BRIEF-FL101550-CHR-WEB.jpg" alt="LUCIE Collection" class="main-image">
-      <h3>Portia</h3>
-      <p>Available in: Cherry</p>
-    </div>
-  </div> <!-- Closing the catalog-items div -->
-</section> <!-- Closing the Fantasie section -->
-
-<!-- Catalog Section for Freya -->
-<section class="catalog-section">
-  <h2>Freya</h2>
-  <div class="catalog-items">
-    <div class="catalog-item">
-      <div class="image-display">
-        <img src="" alt="BELLE Collection" class="main-image">
+  <!-- Catalog Section for Fantasie -->
+  <section class="catalog-section">
+    <h1>Coming Soon</h1>
+    <h2>Fantasie</h2>
+    <div class="catalog-items">
+      <!-- First Catalog Item -->
+      <div class="catalog-item">
+        <img src="comingSoon/Fanatsie/PORTIA-BLACK-UW BALCONETTE BRA-FL102607-BRAZILIAN-FL102670-BLK-1-PRINT.jpg" alt="Portia Collection" class="main-image">
+        <h3>Portia</h3>
+        <p>Available in: Black</p>
       </div>
-      <div class="color-selector">
-        <!-- Color options for BELLE -->
-        <div class="color-option active" style="background-color: #000000" data-image="comingSoon/Freya/LOVELAND-BOMBSHELL-BLACK-UW PLUNGE BRA-AA401002-BRAZILIAN-AA401071-SUSPENDER-AA401091-BOK 1-RGB.jpg" onclick="changeImage(this, this.getAttribute('data-image'))"></div>
-        <div class="color-option" style="background-color: #004225;" data-image="comingSoon/Freya/LOVELAND-DEEP-EMERALD-UW PLUNGE BRA-AA401002-BRIEF-AA401067-DPE-2-PRINT.jpg" onclick="changeImage(this, this.getAttribute('data-image'))"></div>
+      <!-- Second Catalog Item -->
+      <div class="catalog-item">
+        <img src="comingSoon/Fanatsie/LUCIA-CHERRY-UW SIDE SUPPORT BRA-FL101501-BRIEF-FL101550-CHR-WEB.jpg" alt="Lucia Collection" class="main-image">
+        <h3>Lucia</h3>
+        <p>Available in: Cherry</p>
       </div>
-      <h3>BELLE</h3>
-      <p>Available in: Black, Deep Emerald</p>
+      <!-- Third Catalog Item -->
+      <div class="catalog-item">
+        <img src="allYear/Fantasie/PIPPA_RASPBERRY-RIPPLE_UW-SIDE-SUPPORT-BRA_FL100701_SHORT_FL100780_600X800_ENGLISH.jpeg" alt="Pippa Collection" class="main-image">
+        <h3>Pippa</h3>
+        <p>Available in: Raspberry</p>
+      </div>
     </div>
-  </div> <!-- Closing the catalog-items div -->
-</section> <!-- Closing the Freya section -->
+  </section>
 
+  <!-- Catalog Section for Freya -->
+  <section class="catalog-section">
+    <h2>Freya</h2>
+    <div class="catalog-items">
+      <!-- Catalog Item with Color Options -->
+      <div class="catalog-item">
+        <div class="image-display">
+          <img src="" alt="Belle Collection" class="main-image">
+        </div>
+        <div class="color-selector">
+          <!-- Color options for Belle -->
+          <div class="color-option active" style="background-color: #000000" data-image="comingSoon/Freya/LOVELAND-BOMBSHELL-BLACK-UW PLUNGE BRA-AA401002-BRAZILIAN-AA401071-SUSPENDER-AA401091-BOK 1-RGB.jpg" onclick="changeImage(this)"></div>
+          <div class="color-option" style="background-color: #004225" data-image="comingSoon/Freya/LOVELAND-DEEP-EMERALD-UW PLUNGE BRA-AA401002-BRIEF-AA401067-DPE-2-PRINT.jpg" onclick="changeImage(this)"></div>
+        </div>
+        <h3>Belle</h3>
+        <p>Available in: Black, Deep Emerald</p>
+      </div>
+    </div>
+  </section>
 
   <!-- JavaScript -->
   <script>
@@ -300,45 +254,43 @@
       navLinks.classList.toggle('active');
 
       const hamburger = document.querySelector('.hamburger');
-      hamburger.classList.toggle('toggle'); // Optional: to animate the hamburger icon
+      hamburger.classList.toggle('toggle');
     }
 
     // Function to change the main image and update the active color option
-    function changeImage(element, imageName) {
-      // Find the closest catalog-item ancestor
+    function changeImage(element) {
       const catalogItem = element.closest('.catalog-item');
-      // Find the main-image within this catalog-item
       const mainImage = catalogItem.querySelector('.main-image');
-      // Update the src of the main-image
+      const imageName = element.getAttribute('data-image');
       mainImage.src = imageName;
-      // Remove 'active' class from all color-options within this catalog-item
+      // Remove 'active' class from all color options
       catalogItem.querySelectorAll('.color-option').forEach(option => {
         option.classList.remove('active');
       });
-      // Add 'active' class to the clicked color-option
+      // Add 'active' class to clicked color option
       element.classList.add('active');
     }
 
-    // Initialize the default images for catalog items with image selectors
+    // Initialize default images on page load
     window.onload = function() {
       document.querySelectorAll('.catalog-item').forEach(item => {
         const firstColorOption = item.querySelector('.color-option');
         if (firstColorOption) {
-          const imageName = firstColorOption.getAttribute('data-image');
-          changeImage(firstColorOption, imageName);
+          changeImage(firstColorOption);
         } else {
-          // If no color options, ensure the main image is displayed
           const mainImage = item.querySelector('.main-image');
-          if (mainImage && mainImage.src === '') {
+          if (mainImage && !mainImage.src) {
             mainImage.src = mainImage.getAttribute('src');
           }
         }
       });
     };
   </script>
+
   <!-- Footer -->
   <footer class="footer">
     <p>&copy; 2024 Vamp Lingerie. All rights reserved.</p>
   </footer>
+
 </body>
 </html>
