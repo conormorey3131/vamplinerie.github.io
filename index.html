@@ -39,10 +39,19 @@
         .navbar h1 {
             color: #F72585;
             font-size: 24px;
+            text-decoration: none;
             margin: 0;
             padding: 0;
             white-space: nowrap;
         }
+        .navbar a {
+  text-decoration: none;
+  color: inherit; /* This ensures the link inherits the color from the h1 element (#F72585) */
+}
+
+.navbar a:hover {
+  text-decoration: none; /* Ensures no underline appears on hover as well */
+}
 
         /* Desktop Navigation */
         .nav-links {

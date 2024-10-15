@@ -19,6 +19,10 @@
 
     /* Navbar Styles */
     .navbar {
+      position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
       background-color: rgba(0, 0, 0, 0.8);
       padding: 15px;
       display: flex;
@@ -27,11 +31,23 @@
       flex-wrap: wrap;
       position: relative;
       z-index: 1000;
+      box-sizing: border-box;
     }
     .navbar h1 {
       color: #F72585;
       font-size: 24px;
+      margin: 0;
+      padding: 0;
+      white-space: nowrap;
     }
+    .navbar a {
+  text-decoration: none;
+  color: inherit; /* This ensures the link inherits the color from the h1 element (#F72585) */
+}
+
+.navbar a:hover {
+  text-decoration: none; /* Ensures no underline appears on hover as well */
+}
     .nav-links {
       list-style-type: none;
       display: flex;
